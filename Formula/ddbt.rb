@@ -3,16 +3,16 @@ require_relative "custom_download_strategy"
 class Ddbt < Formula
   desc "ddbt is a simple command line tool that does one job and one job only: delete all items in a AWS DynamoDB table."
   homepage "https://github.com/jenslauterbach/ddbt/"
-  version "0.0.2"
+  version "0.0.3"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/jenslauterbach/ddbt/releases/download/v0.0.2/ddbt_0.0.2_Darwin_x86_64.tar.gz", :using => CurlDownloadStrategy.
-    sha256 "f377d1f169ce91178e0da4ce9dd8c36466105af3680f79e86510019c40a87644"
+    url "https://github.com/jenslauterbach/ddbt/releases/download/v0.0.3/ddbt_0.0.3_Darwin_x86_64.tar.gz", :using => CurlDownloadStrategy
+    sha256 "dd7f1b08b29ca3dcf728cc1db66f545f59413ae083e22fc939153ebd77a01f4a"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/jenslauterbach/ddbt/releases/download/v0.0.2/ddbt_0.0.2_Linux_x86_64.tar.gz", :using => CurlDownloadStrategy.
-      sha256 "5f1683a8b36dd26ce1d73194222cfbcbef5492075006cfe1b4b33fe75a09d606"
+      url "https://github.com/jenslauterbach/ddbt/releases/download/v0.0.3/ddbt_0.0.3_Linux_x86_64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "23fb7371715dd1cd4c5281f5b5315af957364efeae3af2e743540c6da22d84dd"
     end
   end
 
