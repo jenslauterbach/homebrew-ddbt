@@ -5,28 +5,44 @@
 class Ddbt < Formula
   desc "ddbt is a simple command line tool that does one job and one job only: delete all items in a AWS DynamoDB table."
   homepage "https://github.com/jenslauterbach/ddbt/"
-  version "0.1.1"
-  bottle :unneeded
+  version "0.1.2"
 
-  if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.1/ddbt_0.1.1_Darwin_x86_64.tar.gz", :using => CurlDownloadStrategy
-    sha256 "faa15016a7389511a7a75b79cc9966c589c4ee0936704cd9c4496616b7e37796"
-  end
-  if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.1/ddbt_0.1.1_Darwin_arm64.tar.gz", :using => CurlDownloadStrategy
-    sha256 "83515702fdcc3f3839bf1ab79150d60456ce1600afe5618a9473f3ada094d41f"
-  end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.1/ddbt_0.1.1_Linux_x86_64.tar.gz", :using => CurlDownloadStrategy
-    sha256 "2745a2f219cb721c998ce657ee9478a5179ee298e1423519973d84fd421e9e21"
-  end
-  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.1/ddbt_0.1.1_Linux_arm64.tar.gz", :using => CurlDownloadStrategy
-    sha256 "a1178a4f93829390fc15ce4485db66d186e67f69e898635731b60f21101e5831"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.2/ddbt_0.1.2_Darwin_x86_64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "55cbf1a07a2431a5c987ee0f7c6f033599a3f220baab05351f02148ad2556429"
+
+      def install
+        bin.install "ddbt"
+      end
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.2/ddbt_0.1.2_Darwin_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "8bacb960675394ff8984911ba680b580371f05f4c21cf8b7d1f6edbc18e2bced"
+
+      def install
+        bin.install "ddbt"
+      end
+    end
   end
 
-  def install
-    bin.install "ddbt"
+  on_linux do
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.2/ddbt_0.1.2_Linux_arm64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "2bff911049c221e5b1fa31a9d32886e219732f862ff447ea7a89f842b4a3edce"
+
+      def install
+        bin.install "ddbt"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/jenslauterbach/ddbt/releases/download/v0.1.2/ddbt_0.1.2_Linux_x86_64.tar.gz", :using => CurlDownloadStrategy
+      sha256 "8b303976781754dec62184d3af0dfc7d17f33c3470d7dae1208d9821adc65d48"
+
+      def install
+        bin.install "ddbt"
+      end
+    end
   end
 
   test do
